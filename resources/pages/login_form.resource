@@ -14,3 +14,12 @@ Fill Password
 
 Click Enter
     Click Element    ${login_button}
+
+Logout
+    Click Element    ${logout_button}
+    Element Should Be Visible    ${login_field}
+
+Get Error Message
+    Wait Until Element Is Visible    ${error_message}
+    ${actual_error}    Get Text    ${error_message}
+    RETURN    ${actual_error}

@@ -1,5 +1,6 @@
 *** Settings ***
 Library         SeleniumLibrary
+Library         ../../libraries/string_utils.py
 Resource        login_form.resource
 Variables       ../locators/home_page.py
 Variables       ../../config/config.py
@@ -19,6 +20,11 @@ Login As User
 
 Open Login Form
     Click Element    ${profile_icon}
+
+Select Menu Option
+    [Arguments]    ${name}
+    ${menu_option}    Format Locator    ${menu_link}    ${name}
+    Click Element    ${menu_option}
 
 Get Logged In User
     Wait Until Element Is Visible    ${user_name}
